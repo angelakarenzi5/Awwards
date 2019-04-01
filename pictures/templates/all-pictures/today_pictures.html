@@ -1,0 +1,47 @@
+{%extends 'all-projects/base.html'%}
+{% load bootstrap3 %}
+
+<body>
+{% block content %}
+{{block.super}}
+    
+   {% for projects_item in projects %}
+
+   <div class="row">
+   <div class="container">
+   <div class="panel">
+   <div class=" panel panel-heading">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL3Xl2Hp9cYXCwr_yK5rTYWMEOxs0GUM1pI_ngN7qgWNHSTiVH" class="img-responsive" style="border-radius:50%;height:50px;width:50px" >
+      <a href="{% url 'view-profile' projects_item.user.id %}" >{{projects_item.user}}</a>
+   </div>
+   <div class="panel panel-body ">
+         <div class="container">
+         <a href="comments\{{projects_item.id}}"><img src="{{projects_item.image.url}}" class="img-responsive" alt="Image" class="center"></a>
+        </div>
+   
+  </div>
+
+   <div class="row" style="margin-left:200px">
+      <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+      <p>Name:{{projects_item.image_name}}</p>
+      <p>Caption:{{projects_item.image_caption}}</p>
+   </div>
+
+ 
+
+     <!-- <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+     
+      </div> -->
+  
+
+   {% empty %}
+   <div class="row">
+     <h2 class="text-center">There No projects Items</h2>
+   </div>
+   {% endfor %}
+</div>
+</div>
+ </div>
+{% endblock %}
+</body>
