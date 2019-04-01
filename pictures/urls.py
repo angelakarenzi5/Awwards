@@ -6,4 +6,8 @@ from . import views
 
 urlpatterns=[
     url(r'^$',views.pictures_of_day,name='picturesToday'),
+    url(r'^new/project$', views.new_project, name='new-project'),
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
