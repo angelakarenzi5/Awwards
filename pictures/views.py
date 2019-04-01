@@ -48,6 +48,6 @@ def new_project(request):
         return redirect('picturesToday')
 
     else:
-        form = NewImageForm()
-    return render(request, 'new_image.html', {"form": form})
+        form = NewProjectForm()
+    return render(request, 'new_project.html', {"form": form})
 
