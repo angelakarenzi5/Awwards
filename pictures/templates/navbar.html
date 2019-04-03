@@ -1,12 +1,23 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
-      <a class="navbar-brand" href="{% url 'picturesToday' %}">Instagram </a>
-      </div>
+<div class="container-fluid">
+<div class="header">
+    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
+    <h1>AWWARDS </h1>
+    <p>Post your projects and get a rating, It matters!</p>
+  </div>
+  <nav class="navbar navbar-inverse">
+  <div class="topnav">
+      <a href="{%url 'picturesToday'%}">Home</a>
+      <a href="{%url 'new-project'%}">Add Project</a>
+      <a href="{%url 'view-profile' user.id %}">View Profile</a>
+      <a href="{%url 'profile'%}">Edit Profile</a>
+      <a href="/accounts/password/change">Change Password</a>
+      <a href="#" style="float:right">Logout</a>
+    </div>
+  </nav>
+
       <div class="col-sm-6 col-md-6">
         {% if user.is_authenticated %}
-        <ul>
+        <!-- <ul>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
                     <span class="caret"></span>
@@ -32,7 +43,7 @@
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> -->
         {% else %}
         <li>
           <a class='btn btn-default' href="/accounts/login">Login</a>
