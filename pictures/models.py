@@ -26,6 +26,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to = 'awards/', blank=True)
     project_details = models.CharField(max_length =100)
     profile=models.ForeignKey(Profile, null=True)
+    link= models.CharField(max_length =100)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 @classmethod
