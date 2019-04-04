@@ -1,8 +1,8 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-from .models import  Profile , Project
+from .models import  Profile , Project , Votes
 import datetime as dt
-from .forms import ProfileForm , NewProjectForm
+from .forms import ProfileForm , NewProjectForm , VotesForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -78,3 +78,19 @@ def view_profile(request, id):
     return render(request, 'view_profile.html',{"profile":profile , "pictures":pictures},)
 
 
+def votes(request,id):
+    current_user = request.user
+    post = Project.objects.get(id=id)
+    votes = Votes.objects.filter(project=post)
+  
+    if request.method == 'POST':
+            vote = VotesForm(request.POST)
+            if vote.is_valid():
+                design = vote.cleaned_data['design']
+                usability = vote.cleaned_data['usability']
+                content = vote.cleaned_data['content']
+                rating = Votes(design=design,usability=usability,content=content,user=request.user,project=post)
+                rating.save()   
+    else:
+        form = VotesForm()
+        return render(request, 'new_votes.html', {"form":form,'post':post,'user':current_user,'votes':votes})

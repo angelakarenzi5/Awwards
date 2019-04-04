@@ -9,7 +9,11 @@ class NewProjectForm(forms.ModelForm):
         model = Project
         exclude = ['profile', 'pub_date','comment']
      
-
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user', 'pub_date','likes']
+        
 class VotesForm(forms.ModelForm):
     class Meta:
         model = Votes
