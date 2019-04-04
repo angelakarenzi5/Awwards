@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, Profile
+from .models import Project, Profile , Votes
 
 class CommentsForm(forms.Form):
     comment = forms.CharField(label='Comment',max_length=100)
@@ -7,10 +7,10 @@ class CommentsForm(forms.Form):
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['profile', 'pub_date','likes']
+        exclude = ['profile', 'pub_date','comment']
      
 
-class ProfileForm(forms.ModelForm):
+class VotesForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        exclude = ['user', 'pub_date','likes']
+        model = Votes
+        exclude = ['user', 'project','posted_on']
