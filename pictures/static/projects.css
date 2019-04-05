@@ -41,4 +41,9 @@
     font-family: 'Caveat', cursive;
     color: black;
     font-size:70px;
+    padding-right:50px;
+  }
+
+  body{
+    background-image:url('https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg')
   }

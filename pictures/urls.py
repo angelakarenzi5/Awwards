@@ -12,7 +12,8 @@ urlpatterns=[
     url(r'^/votes/(\d+)', views.votes, name='new-votes'),
     url(r'^view/project/(\d+)', views.view_project, name='view-project'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^api/profile/$', views.ProfileList.as_view())
+    url(r'^api/profile/$', views.ProfileList.as_view()),
+    url(r'^api/project/$', views.ProjectList.as_view()),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
