@@ -26,7 +26,7 @@ View posted projects and their detailsRate and review other users projects, Sear
 * $ python3.6 manage.py test pictures<br>
 
 
-##Run initial Migration
+###Run initial Migration
 * python3.6 manage.py makemigrations pictures 
 * python3.6 manage.py migrate 
 
