@@ -31,22 +31,21 @@ class Project(models.Model):
     link= models.CharField(max_length =100)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
-@classmethod
-def todays_pictures(cls):
-        today = dt.date.today()
-        pictures = cls.objects.filter(pub_date__date = today)
-        return pictures
+    @classmethod
+    def todays_pictures(cls):
+                today = dt.date.today()
+                pictures = cls.objects.filter(pub_date__date = today)
+                return pictures
 
-@classmethod
-def days_pictures(cls,date):
-        pictures = cls.objects.filter(pub_date__date = date)
-        return pictures
+    @classmethod
+    def days_pictures(cls,date):
+                pictures = cls.objects.filter(pub_date__date = date)
+                return pictures
 
-@classmethod
-def search_by_title(cls,search_term):
-        pictures = cls.objects.filter(title__icontains=search_term)
-        return pictures
-
+    @classmethod
+    def search_by_project(cls,search_term):
+                project_title = Project.objects.filter(project_title__icontains=search_term)
+                return project_title
 
 class Votes(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

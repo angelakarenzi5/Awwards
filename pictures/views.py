@@ -106,3 +106,17 @@ def votes(request,id):
     else:
         form = VotesForm()
         return render(request, 'new_votes.html', {"form":form,'post':post,'user':current_user,'votes':votes})
+
+
+def search_results(request):
+
+    if 'project_title' in request.GET and request.GET["project_title"]:
+        search_term = request.GET.get("project_title")
+        searched_project_title = Project.search_by_project(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"projects": searched_project_title})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
