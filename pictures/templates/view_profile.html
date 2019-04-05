@@ -10,26 +10,17 @@
       <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
       <h1>{{profile.bio}}</h1>
       </div>
-      <!-- <div class="col-md-4 col-sm-4">
-      
-      </div> -->
-   
-
-    
     </div>
     
-  
 
     
     {% for pictures_item in pictures %}
       <div class="col-md-4 col-sm-4 images" style="margin-top:100px;">
       <img src="{{pictures_item.image.url}}"  alt="Image" width="300" height="300">
-    </div>
-  
-
-
-
-    
+      <p>{{content}}</p>
+      <p>{{design}}</p>
+      <p>{{usability}}</p>
+    </div>  
 
   {% empty %}
   
@@ -38,7 +29,5 @@
   {% endfor %}
 
   </div>
-  
-
 
  {% endblock %}

@@ -75,7 +75,18 @@ def view_profile(request, id):
 
     profile=Profile.objects.get(user_id=id)
     pictures = Project.objects.filter(user_id=id)
-    return render(request, 'view_profile.html',{"profile":profile , "pictures":pictures},)
+    # votes = Votes.objects.filter(project = id).all() 
+
+    # design=0
+    # usability=0
+    # content=0
+    # num = len(votes)
+
+    # for n in votes:
+    #     design+=round(n.design/num)
+    #     usability+=round(n.usability/num)
+    #     content+=round(n.content/num)
+    return render(request, 'view_profile.html',{"profile":profile , "pictures":pictures,"votes":votes,"usability":usability,"design":design,"content":content})
 
 
 def votes(request,id):
@@ -91,6 +102,7 @@ def votes(request,id):
                 content = vote.cleaned_data['content']
                 rating = Votes(design=design,usability=usability,content=content,user=request.user,project=post)
                 rating.save()   
+                return redirect('picturesToday')
     else:
         form = VotesForm()
         return render(request, 'new_votes.html', {"form":form,'post':post,'user':current_user,'votes':votes})

@@ -14,12 +14,9 @@
 
 </head>
 
-<body>
-    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">RATE</button>
-    <div id="demo" class="collapse">
-                  
+<body>            
     
-  <form  action="{%url 'new-votes'%}" method="post" enctype="multipart/form-data">
+  <form  action="{%url 'new-votes' post.id%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
