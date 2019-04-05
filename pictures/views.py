@@ -4,6 +4,8 @@ from .models import  Profile , Project , Votes
 import datetime as dt
 from .forms import ProfileForm , NewProjectForm , VotesForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
 # Create your views here.
 
 @login_required(login_url='/accounts/login/')
