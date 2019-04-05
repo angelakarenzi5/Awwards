@@ -75,19 +75,42 @@ def view_profile(request, id):
 
     profile=Profile.objects.get(user_id=id)
     pictures = Project.objects.filter(user_id=id)
-    # votes = Votes.objects.filter(project = id).all() 
 
-    # design=0
-    # usability=0
-    # content=0
-    # num = len(votes)
+    return render(request, 'view_profile.html',{"profile":profile , "pictures":pictures})
 
-    # for n in votes:
-    #     design+=round(n.design/num)
-    #     usability+=round(n.usability/num)
-    #     content+=round(n.content/num)
-    return render(request, 'view_profile.html',{"profile":profile , "pictures":pictures,"votes":votes,"usability":usability,"design":design,"content":content})
 
+
+
+def search_results(request):
+
+    if 'project_title' in request.GET and request.GET["project_title"]:
+        search_term = request.GET.get("project_title")
+        searched_project_title = Project.search_by_project(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"projects": searched_project_title})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+
+
+@login_required(login_url='/accounts/login/')
+def view_project(request, id):
+
+    project=Project.objects.get(id=id)
+    votes = Votes.objects.filter(project = id).all() 
+
+    design=0
+    usability=0
+    content=0
+    num = len(votes)
+
+    for n in votes:
+        design+=round(n.design/num)
+        usability+=round(n.usability/num)
+        content+=round(n.content/num)
+    return render(request, 'view_project.html',{"project":project ,"votes":votes,"usability":usability,"design":design,"content":content})
 
 def votes(request,id):
     current_user = request.user
@@ -106,17 +129,3 @@ def votes(request,id):
     else:
         form = VotesForm()
         return render(request, 'new_votes.html', {"form":form,'post':post,'user':current_user,'votes':votes})
-
-
-def search_results(request):
-
-    if 'project_title' in request.GET and request.GET["project_title"]:
-        search_term = request.GET.get("project_title")
-        searched_project_title = Project.search_by_project(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'search.html',{"message":message,"projects": searched_project_title})
-
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})

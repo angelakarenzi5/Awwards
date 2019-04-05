@@ -1,0 +1,14 @@
+{%extends 'all-pictures/base.html'%}
+
+ {% block content %}
+    
+      <div class="col-md-4 col-sm-4 images" style="margin-top:100px;">
+      <img src="{{project.image.url}}"  alt="Image" width="300" height="300">
+      <p>{{content}}</p>
+      <p>{{design}}</p>
+      <p>{{usability}}</p>
+    </div>  
+
+  </div>
+
+ {% endblock %}
