@@ -6,7 +6,7 @@ from .forms import ProfileForm , NewProjectForm , VotesForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import MerchSerializer
+from .serializer import ProfileSerializer, ProjectSerializer
 # Create your views here.
 
 
@@ -137,15 +137,15 @@ def votes(request,id):
         return render(request, 'new_votes.html', {"form":form,'post':post,'user':current_user,'votes':votes})
 
 
-class MerchList(APIView):
+class ProfileList(APIView):
     def get(self, request, format=None):
-        all_merch = Profile.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
         return Response(serializers.data)
 
-class MerchList(APIView):
+class ProjectList(APIView):
     def get(self, request, format=None):
-        all_merch = Project.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
+        all_project = Project.objects.all()
+        serializers = ProjectSerializer(all_project, many=True)
         return Response(serializers.data)
 
