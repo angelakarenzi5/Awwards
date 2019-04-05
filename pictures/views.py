@@ -6,7 +6,11 @@ from .forms import ProfileForm , NewProjectForm , VotesForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .serializer import MerchSerializer
 # Create your views here.
+
+
+
 
 @login_required(login_url='/accounts/login/')
 def pictures_of_day(request):
@@ -131,3 +135,17 @@ def votes(request,id):
     else:
         form = VotesForm()
         return render(request, 'new_votes.html', {"form":form,'post':post,'user':current_user,'votes':votes})
+
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = Profile.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = Project.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+
