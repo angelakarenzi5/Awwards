@@ -4,9 +4,9 @@ from .models import Profile , Project
 class MerchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('name', 'description', 'price')
+        fields = ('profile_photo', 'bio', 'contact' , 'user')
 
 class MerchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ('name', 'description', 'price')
+        fields = ('project_title', 'image', 'project_details')
