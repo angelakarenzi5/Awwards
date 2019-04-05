@@ -17,7 +17,7 @@ View posted projects and their detailsRate and review other users projects, Sear
 * In your terminal <br>
 
     $ source < name of virtual environment>/bin/activate<br>
-    $ git clone https://github.com/angelakarenzi5/Instagram.git<br>
+    $ git clone https://github.com/angelakarenzi5/Awwards.git<br>
     $ cd Instagram-Clone
 
 ### Test
