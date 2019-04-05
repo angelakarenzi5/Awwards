@@ -37,9 +37,7 @@ View posted projects and their detailsRate and review other users projects, Sear
 
 ## Known Bugs
 
-* Followers
-* Following
-* Like
+* Average of rating 
 
 ## Technologies used
 
