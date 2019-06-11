@@ -1,4 +1,4 @@
-# Instagram Clone
+# Awwards
 #### Awards is an application that lets you display your projects for others, view and rate projects, 5th April 2019
 
 ### By **KARENZI ANGELA**
